@@ -1430,14 +1430,21 @@ describe('Unit testing of the vectorizer factory class', () => {
   });
 
   it('should serialize text2vec-google `location` when set and omit it when unset', () => {
-    // location set → present in serialized config (Google Vertex AI region)
-    const withLocation = configure.vectors.text2VecGoogle({ location: 'us-central1' });
+    // location set → present in serialized config (Google Vertex AI region). It only routes correctly
+    // alongside a matching `apiEndpoint`, and Vertex AI always requires a `projectId`.
+    const withLocation = configure.vectors.text2VecGoogle({
+      apiEndpoint: 'europe-west1-aiplatform.googleapis.com',
+      location: 'europe-west1',
+      projectId: 'project-id',
+    });
     expect(withLocation).toEqual<VectorConfigCreate<never, undefined, 'hnsw', 'text2vec-google'>>({
       name: undefined,
       vectorizer: {
         name: 'text2vec-google',
         config: {
-          location: 'us-central1',
+          apiEndpoint: 'europe-west1-aiplatform.googleapis.com',
+          location: 'europe-west1',
+          projectId: 'project-id',
         },
       },
     });
@@ -1453,7 +1460,6 @@ describe('Unit testing of the vectorizer factory class', () => {
         },
       },
     });
-    expect((withoutLocation.vectorizer.config as Record<string, unknown>).location).toBeUndefined();
   });
 
   it('should create the correct Text2VecGoogleGeminiConfig type with defaults', () => {
