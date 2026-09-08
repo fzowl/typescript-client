@@ -7,7 +7,7 @@ export type RerankerCohereConfig = {
 
 export type RerankerVoyageAIConfig = {
   baseURL?: string;
-  model?: 'rerank-lite-1' | string;
+  model?: 'rerank-3' | 'rerank-3-lite' | 'rerank-2.5' | 'rerank-2.5-lite' | string;
 };
 
 export type RerankerJinaAIConfig = {

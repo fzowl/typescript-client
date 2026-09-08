@@ -345,7 +345,7 @@ export type Multi2VecJinaAIConfig = {
   };
 };
 
-/** The configuration for multi-media vectorization using the VoyageAI module.
+/** The configuration for multi-media vectorization using the VoyageAI by MongoDB module.
  *
  * See the [documentation](https://weaviate.io/developers/weaviate/model-providers/voyageai/embeddings-multimodal) for detailed usage.
  */
@@ -656,7 +656,7 @@ export type Text2VecTransformersConfig = {
 };
 
 /**
- * The configuration for text vectorization using the VoyageAI module.
+ * The configuration for text vectorization using the VoyageAI by MongoDB module.
  *
  * See the [documentation](https://weaviate.io/developers/weaviate/model-providers/voyageai/embeddings) for detailed usage.
  */
@@ -664,7 +664,17 @@ export type Text2VecVoyageAIConfig = {
   /** The base URL to use where API requests should go. */
   baseURL?: string;
   /** The model to use. */
-  model?: string;
+  model?:
+    | 'voyage-4-large'
+    | 'voyage-4'
+    | 'voyage-4-lite'
+    | 'voyage-context-4'
+    | 'voyage-code-4'
+    | 'voyage-finance-2'
+    | 'voyage-law-2'
+    | 'voyage-3.5'
+    | 'voyage-3.5-lite'
+    | string;
   /** Whether to truncate the input texts to fit within the context length. */
   truncate?: boolean;
   /** Whether to vectorize the collection name. */
