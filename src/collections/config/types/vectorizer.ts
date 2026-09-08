@@ -345,7 +345,7 @@ export type Multi2VecJinaAIConfig = {
   };
 };
 
-/** The configuration for multi-media vectorization using the VoyageAI module.
+/** The configuration for multi-media vectorization using the VoyageAI by MongoDB module.
  *
  * See the [documentation](https://weaviate.io/developers/weaviate/model-providers/voyageai/embeddings-multimodal) for detailed usage.
  */
@@ -357,7 +357,7 @@ export type Multi2VecVoyageAIConfig = {
   /** The image fields used when vectorizing. */
   imageFields?: string[];
   /** The model to use. */
-  model?: 'voyage-multimodal-3' | 'voyage-multimodal-3.5' | string;
+  model?: 'voyage-multimodal-3.5' | 'voyage-multimodal-3' | string;
   /** How the output from the model should be encoded on return. */
   outputEncoding?: string;
   /** The text fields used when vectorizing. */
@@ -656,15 +656,37 @@ export type Text2VecTransformersConfig = {
 };
 
 /**
- * The configuration for text vectorization using the VoyageAI module.
+ * The configuration for text vectorization using the VoyageAI by MongoDB module.
  *
  * See the [documentation](https://weaviate.io/developers/weaviate/model-providers/voyageai/embeddings) for detailed usage.
  */
 export type Text2VecVoyageAIConfig = {
   /** The base URL to use where API requests should go. */
   baseURL?: string;
-  /** The model to use. */
-  model?: string;
+  /**
+   * The model to use. Any string is accepted; the values below are the models currently
+   * offered by VoyageAI by MongoDB (see https://docs.voyageai.com/docs/embeddings).
+   *
+   * The `voyage-context-*` models are contextualized-chunk embedding models: they support both
+   * a flat list of chunks and a nested list of per-document chunks as input, matching the
+   * official `contextualized_embed` spec (`inputs: List[List[str]] | List[str]`).
+   * See https://docs.voyageai.com/docs/contextualized-chunk-embeddings.
+   */
+  model?:
+    | 'voyage-4-large'
+    | 'voyage-4'
+    | 'voyage-4-lite'
+    | 'voyage-3.5'
+    | 'voyage-3.5-lite'
+    | 'voyage-3-large'
+    | 'voyage-code-4'
+    | 'voyage-code-3'
+    | 'voyage-finance-2'
+    | 'voyage-law-2'
+    | 'voyage-multilingual-2'
+    | 'voyage-context-4'
+    | 'voyage-context-3'
+    | string;
   /** Whether to truncate the input texts to fit within the context length. */
   truncate?: boolean;
   /** Whether to vectorize the collection name. */
