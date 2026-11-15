@@ -86,12 +86,12 @@ export default {
     };
   },
   /**
-   * Create a `ModuleConfig<'reranker-voyageai', RerankerVoyageAIConfig>` object for use when reranking using the `reranker-voyageai` module.
+   * Create a `ModuleConfig<'reranker-voyageai', RerankerVoyageAIConfig>` object for use when reranking using the `reranker-voyageai` module (Voyage AI by MongoDB).
    *
-   * See the [documentation](https://weaviate.io/developers/weaviate/model-providers/voyageai/reranker) for detailed usage.
+   * See the [documentation](https://docs.weaviate.io/weaviate/model-providers/voyageai/reranker) for detailed usage.
    *
-   * @param {RerankerVoyageAIConfig} [config] The configuration for the `reranker-voyage-ai` module.
-   * @returns {ModuleConfig<'reranker-voyage-ai', RerankerVoyageAIConfig | undefined>} The configuration object.
+   * @param {RerankerVoyageAIConfig} [config] The configuration for the `reranker-voyageai` module.
+   * @returns {ModuleConfig<'reranker-voyageai', RerankerVoyageAIConfig | undefined>} The configuration object.
    */
   voyageAI: (
     config?: RerankerVoyageAIConfig

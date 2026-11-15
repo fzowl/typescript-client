@@ -432,9 +432,9 @@ const legacyVectors = {
     });
   },
   /**
-   * Create a `VectorConfigCreate` object with the vectorizer set to `'multi2vec-clip'`.
+   * Create a `VectorConfigCreate` object with the vectorizer set to `'multi2vec-voyageai'`.
    *
-   * See the [documentation](https://weaviate.io/developers/weaviate/model-providers/transformers/embeddings-multimodal) for detailed usage.
+   * See the [documentation](https://docs.weaviate.io/weaviate/model-providers/voyageai/embeddings-multimodal) for detailed usage.
    *
    * @param {ConfigureNonTextVectorizerOptions<N, I, 'multi2vec-voyageai'>} [opts] The configuration options for the `multi2vec-voyageai` vectorizer.
    * @returns {VectorConfigCreate<PrimitiveKeys<T>[], N, I, 'multi2vec-voyageai'>} The configuration object.
@@ -839,7 +839,7 @@ const legacyVectors = {
   /**
    * Create a `VectorConfigCreate` object with the vectorizer set to `'text2vec-voyageai'`.
    *
-   * See the [documentation](https://weaviate.io/developers/weaviate/model-providers/voyageai/embeddings) for detailed usage.
+   * See the [documentation](https://docs.weaviate.io/weaviate/model-providers/voyageai/embeddings) for detailed usage.
    *
    * @param {ConfigureTextVectorizerOptions<T, N, I, 'text2vec-voyageai'>} [opts] The configuration for the `text2vec-voyageai` vectorizer.
    * @returns {VectorConfigCreate<PrimitiveKeys<T>, N, I, 'text2vec-voyageai'>} The configuration object.
