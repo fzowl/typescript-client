@@ -345,9 +345,9 @@ export type Multi2VecJinaAIConfig = {
   };
 };
 
-/** The configuration for multi-media vectorization using the VoyageAI module.
+/** The configuration for multi-media vectorization using the Voyage AI by MongoDB module.
  *
- * See the [documentation](https://weaviate.io/developers/weaviate/model-providers/voyageai/embeddings-multimodal) for detailed usage.
+ * See the [documentation](https://docs.weaviate.io/weaviate/model-providers/voyageai/embeddings-multimodal) for detailed usage.
  */
 export type Multi2VecVoyageAIConfig = {
   /** The base URL to use where API requests should go. */
@@ -656,20 +656,33 @@ export type Text2VecTransformersConfig = {
 };
 
 /**
- * The configuration for text vectorization using the VoyageAI module.
+ * The configuration for text vectorization using the Voyage AI by MongoDB module.
  *
- * See the [documentation](https://weaviate.io/developers/weaviate/model-providers/voyageai/embeddings) for detailed usage.
+ * See the [documentation](https://docs.weaviate.io/weaviate/model-providers/voyageai/embeddings) for detailed usage.
  */
 export type Text2VecVoyageAIConfig = {
   /** The base URL to use where API requests should go. */
   baseURL?: string;
   /** The model to use. */
-  model?: string;
+  model?:
+    | 'voyage-4-large'
+    | 'voyage-4'
+    | 'voyage-4-lite'
+    | 'voyage-code-4'
+    | 'voyage-3-large'
+    | 'voyage-3.5'
+    | 'voyage-3.5-lite'
+    | 'voyage-code-3'
+    | 'voyage-finance-2'
+    | 'voyage-law-2'
+    | 'voyage-context-4'
+    | 'voyage-context-3'
+    | string;
   /** Whether to truncate the input texts to fit within the context length. */
   truncate?: boolean;
   /** Whether to vectorize the collection name. */
   vectorizeCollectionName?: boolean;
-  /** The number of dimensions for the generated embeddings. */
+  /** The number of dimensions for the generated embeddings. The models listed above support 256, 512, 1024 (default) and 2048, except `voyage-finance-2` and `voyage-law-2`, which are fixed at 1024. Other models may have different fixed dimensions. */
   dimensions?: number;
 };
 
